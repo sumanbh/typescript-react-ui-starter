@@ -1,0 +1,6 @@
+dist
+build
+public
+.yarn
+node_modules
+coverage
