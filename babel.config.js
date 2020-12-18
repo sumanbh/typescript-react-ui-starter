@@ -29,13 +29,6 @@ module.exports = {
       plugins: productionPlugins,
       ignore: ['**/*.test.js'],
     },
-    es: {
-      plugins: [
-        ...productionPlugins,
-        ['@babel/plugin-transform-runtime', { useESModules: true }],
-      ],
-      ignore: ['**/*.test.js'],
-    },
     esm: {
       plugins: [
         ...productionPlugins,
