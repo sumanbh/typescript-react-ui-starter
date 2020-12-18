@@ -39,6 +39,10 @@ const execho = (command, extraEnv) => {
   }
 };
 
+const emitDeclarationFiles = (outDir = './dist') => {
+  execho(`tsc --emitDeclarationOnly --outDir ${outDir}`);
+};
+
 const main = async () => {
   console.log(`👉 Building ${name}`);
 
@@ -52,12 +56,14 @@ const main = async () => {
       BABEL_ENV: 'esm',
     }
   );
+  emitDeclarationFiles('./dist/esm');
 
   // Build CommonJS modules
   execho(
     `${env} ${babel} ${config} ${sourceDir} --out-dir ${distDir} --extensions .ts,.tsx --copy-files --no-copy-ignored`,
     { BABEL_ENV: 'cjs' }
   );
+  emitDeclarationFiles();
 
   if (process.env.CHECK_CIRCULAR !== 'false') {
     // First we find any circular dependencies that may be present
