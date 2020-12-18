@@ -11,6 +11,7 @@ const defaultPresets = [
 const productionPlugins = ['@babel/plugin-transform-react-constant-elements'];
 
 module.exports = {
+  ignore: ['**/*.test.ts', '**/*.test.tsx'],
   presets: defaultPresets.concat(['@babel/preset-react']),
   plugins: [
     ['@babel/plugin-proposal-class-properties', { loose: true }],

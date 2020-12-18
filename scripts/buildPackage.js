@@ -47,7 +47,7 @@ const main = async () => {
 
   // Build ESM
   execho(
-    `${env} ${babel} ${config} ${sourceDir} --out-dir ${distDir}/esm --extensions .ts,.tsx --copy-files`,
+    `${env} ${babel} ${config} ${sourceDir} --out-dir ${distDir}/esm --extensions .ts,.tsx --copy-files --no-copy-ignored`,
     {
       BABEL_ENV: 'esm',
     }
@@ -55,7 +55,7 @@ const main = async () => {
 
   // Build CommonJS modules
   execho(
-    `${env} ${babel} ${config} ${sourceDir} --out-dir ${distDir} --extensions .ts,.tsx --copy-files`,
+    `${env} ${babel} ${config} ${sourceDir} --out-dir ${distDir} --extensions .ts,.tsx --copy-files --no-copy-ignored`,
     { BABEL_ENV: 'cjs' }
   );
 
