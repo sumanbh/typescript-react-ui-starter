@@ -12,7 +12,15 @@ const productionPlugins = ['@babel/plugin-transform-react-constant-elements'];
 
 module.exports = {
   ignore: ['**/*.test.ts', '**/*.test.tsx'],
-  presets: defaultPresets.concat(['@babel/preset-react']),
+  presets: defaultPresets.concat([
+    [
+      // eslint-disable-next-line global-require
+      require('@babel/preset-react').default,
+      {
+        runtime: 'automatic',
+      },
+    ],
+  ]),
   plugins: [
     ['@babel/plugin-proposal-class-properties', { loose: true }],
     [

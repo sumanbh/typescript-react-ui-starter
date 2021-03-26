@@ -36,11 +36,13 @@ module.exports = {
   rules: {
     'no-console': 'off',
     'react/prop-types': 'off',
-    'react/jsx-filename-extension': [1, { extensions: ['.tsx', '.ts'] }],
+    'react/jsx-filename-extension': [1, { extensions: ['.tsx'] }],
+    'react/react-in-jsx-scope': 'off',
     'import/prefer-default-export': 'off',
     'import/extensions': 'off',
     'import/no-extraneous-dependencies': 'off',
     'no-use-before-define': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-use-before-define': [
       'warn',
       {

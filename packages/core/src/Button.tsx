@@ -1,10 +1,8 @@
-import * as React from 'react';
-
 export interface ButtonProps {
   text: string;
 }
 
-const Button: React.FC<ButtonProps> = ({ text }) => {
+const Button = ({ text }: ButtonProps) => {
   return <button type="button">{text}</button>;
 };
 
