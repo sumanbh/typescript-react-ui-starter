@@ -5,6 +5,6 @@ describe('Button', () => {
   it('should display a welcome text', () => {
     render(<Button text="Welcome!" />);
 
-    expect(screen.getByText('Welcome!')).toBeInTheDocument();
+    expect(screen.getByText('Welcome!')).toBeVisible();
   });
 });

@@ -1,8 +1,5 @@
 import '@testing-library/jest-dom/extend-expect';
 
-/**
- * Cookie mock of sorts...
- */
 let cookie = '';
 
 if (global.window) {
@@ -37,33 +34,3 @@ beforeEach(() => {
     localStorage.clear();
   }
 });
-
-/**
- * Fail tests that log errors or warnings, because these can point to actual
- * bugs and once there are already a few of these the person writing new code
- * will start ignoring them.
- *
- * If a test is expected to log an error or a warning, mock it so the output
- * doesn’t actually show up.
- */
-const logAndThrow = (loggerFn) => {
-  function imp(message, ...optionalParams) {
-    // Keep default logging behaviour
-    loggerFn.call(console, message, ...optionalParams);
-    if (message instanceof Error) {
-      throw message;
-    } else {
-      const err = new Error(message);
-      // Skip this frame in the stack to point to the actual log call-site
-      Error.captureStackTrace(err, imp);
-      throw err;
-    }
-  }
-  return imp;
-};
-/* eslint-disable no-console */
-const originalConsoleError = console.error;
-const originalWarnError = console.warn;
-console.error = logAndThrow(originalConsoleError);
-console.warn = logAndThrow(originalWarnError);
-/* eslint-enable no-console */

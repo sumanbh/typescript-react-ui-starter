@@ -16,8 +16,7 @@ module.exports = {
   collectCoverageFrom: ['<rootDir>/packages/**/src/**/*.{js,jsx,mjs,ts,tsx}'],
   setupFilesAfterEnv: ['<rootDir>/scripts/jest/setupTests.js'],
   testEnvironment: 'jsdom',
-  testRunner: require.resolve('jest-circus/runner'),
-  testURL: 'http://localhost',
+  testEnvironmentOptions: { url: 'http://localhost' },
   transformIgnorePatterns: [
     '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$',
     '^.+\\.module\\.(css|sass|scss)$',

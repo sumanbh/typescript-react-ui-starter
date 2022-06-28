@@ -2,7 +2,7 @@
 
 const { execSync } = require('child_process');
 const fs = require('fs');
-const chalk = require('chalk');
+const pc = require('picocolors');
 const path = require('path');
 const checkCircularDeps = require('./checkCircularDeps');
 
@@ -12,9 +12,7 @@ const dirName = dirPath.slice(lastSlashIdx);
 const pathInPackages = path.resolve(__dirname, `../packages/${dirName}`);
 const exists = fs.existsSync(pathInPackages);
 if (!exists) {
-  console.error(
-    chalk.red(`Provided path ${dirPath} does not exist in packages!`)
-  );
+  console.error(pc.red(`Provided path ${dirPath} does not exist in packages!`));
   process.exit(1);
 }
 
@@ -34,7 +32,7 @@ const execho = (command, extraEnv) => {
       env: { ...process.env, ...extraEnv },
     });
   } catch (error) {
-    console.error(chalk.red(error.output[1]));
+    console.error(pc.red(error.output[1]));
     process.exit(error.status);
   }
 };

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const madge = require('madge');
-const chalk = require('chalk');
+const pc = require('picocolors');
 const dedent = require('dedent');
 
 const dirPath = process.env.PWD;
@@ -15,13 +15,13 @@ const checkCircularDeps = async () => {
   if (circular.length > 0) {
     const errorPaths = circular.map((arr) => arr.join(' -> '));
     console.log(
-      chalk.red(dedent`\n\nERROR: Circular dependencies found! 
+      pc.red(dedent`\n\nERROR: Circular dependencies found! 
                             Usually this means you're importing directly from the index file.\n
                             Please fix the import path(s) in these files:\n
                             `)
     );
     errorPaths.forEach((val, idx) =>
-      console.log(chalk.redBright(`${idx + 1}. ${val}\n`))
+      console.log(pc.red(pc.bold(`${idx + 1}. ${val}\n`)))
     );
     process.exit(1);
   }
